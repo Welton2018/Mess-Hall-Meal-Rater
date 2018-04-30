@@ -15,11 +15,12 @@ class Meal {
     var name: String
     var photo: UIImage?
     var rating: Int
+    var review: String
     
     
     //MARK: Initialization
     
-    init?(name: String, photo: UIImage?, rating: Int) {
+    init?(name: String, photo: UIImage?, rating: Int, review: String) {
         
         // The name must not be empty
         guard !name.isEmpty else {
@@ -35,6 +36,7 @@ class Meal {
         self.name = name
         self.photo = photo
         self.rating = rating
+        self.review = review
     }
     
     

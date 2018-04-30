@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iFL-tS-Qkr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iFL-tS-Qkr">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Westerosi Meals-->
+        <!--West Point Meals-->
         <scene sceneID="y4K-qB-LcF">
             <objects>
                 <tableViewController id="4Xw-hM-R3c" customClass="MealTableViewController" customModule="FoodTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -23,10 +23,10 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bri-qa-iOS" id="UzS-DB-zNf">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-B3-zoU">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="restaurant-default" translatesAutoresizingMaskIntoConstraints="NO" id="eMb-B3-zoU">
                                             <rect key="frame" x="0.0" y="0.0" width="91" height="90"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -61,7 +61,7 @@
                             <outlet property="delegate" destination="4Xw-hM-R3c" id="QAs-j3-TLJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Westerosi Meals" id="sPb-wS-3Db">
+                    <navigationItem key="navigationItem" title="West Point Meals" id="sPb-wS-3Db">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="0TP-ip-qGF">
                             <connections>
                                 <segue destination="HCH-bp-dcb" kind="presentation" identifier="AddItem" id="1XA-So-CC7"/>
@@ -90,7 +90,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
-                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="sj5-Jm-rtq">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="restaurant-default" translatesAutoresizingMaskIntoConstraints="NO" id="sj5-Jm-rtq">
                                         <rect key="frame" x="27.5" y="38" width="320" height="320"/>
                                         <gestureRecognizers/>
                                         <constraints>
@@ -108,10 +108,20 @@
                                     <constraint firstAttribute="trailing" secondItem="a6H-K4-G8E" secondAttribute="trailing" id="3M8-py-Fzd"/>
                                 </constraints>
                             </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Enter your personal review of the dish here." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CUm-8J-568">
+                                <rect key="frame" x="16" y="572" width="343" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.97223121761658027" green="0.96090545788492954" blue="0.29213758148646457" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Yd2-r4-yo2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ASp-F3-FP3"/>
                             <constraint firstItem="Yd2-r4-yo2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="J3r-kW-aLK"/>
+                            <constraint firstItem="Yd2-r4-yo2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Kg0-5R-ak1"/>
                             <constraint firstItem="Yd2-r4-yo2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Vu9-S7-mRi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yd2-r4-yo2" secondAttribute="trailing" id="igY-dW-1PK"/>
                         </constraints>
@@ -125,6 +135,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="FV8-pG-d6I">
                             <connections>
+                                <action selector="save:" destination="BYZ-38-t0r" id="QHm-DD-gMF"/>
                                 <segue destination="hVj-fE-p5U" kind="unwind" unwindAction="unwindToMealListWithSender:" id="djp-ro-74W"/>
                             </connections>
                         </barButtonItem>
@@ -133,6 +144,7 @@
                         <outlet property="nameTextField" destination="a6H-K4-G8E" id="dGK-o6-acV"/>
                         <outlet property="photoImageView" destination="sj5-Jm-rtq" id="WLt-vO-cae"/>
                         <outlet property="ratingControl" destination="hST-WM-K08" id="fKQ-5I-CG4"/>
+                        <outlet property="reviewTextView" destination="CUm-8J-568" id="POF-Ue-hdt"/>
                         <outlet property="saveButton" destination="FV8-pG-d6I" id="nOf-MI-Wo1"/>
                     </connections>
                 </viewController>
@@ -144,7 +156,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1065" y="117"/>
+            <point key="canvasLocation" x="1064.8" y="116.49175412293854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5X1-pn-k2l">
@@ -184,7 +196,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="defaultPhoto" width="450" height="337"/>
+        <image name="restaurant-default" width="800" height="800"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CQ8-qh-pma"/>

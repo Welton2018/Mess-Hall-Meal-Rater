@@ -16,6 +16,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var ratingControl: RatingControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var reviewTextView: UITextView!
     
     /*
  This value is either passed by 'MealTableViewController' in
@@ -29,6 +30,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // Handle th text field's user input through delegate callbacks.
         nameTextField.delegate = self
+        reviewTextView.delegate = self as? UITextViewDelegate     //Added by SW 30APR18
         
         // Set up view if editing the existing Meal.
         if let meal = meal {
@@ -36,10 +38,11 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
             nameTextField.text = meal.name
             photoImageView.image = meal.photo
             ratingControl.rating = meal.rating
+            reviewTextView.text = meal.review      //Added by SW 30APR18
         }
         
         // Enable the Save button only if the text filed has a valid meal name
-        updateSaveButtonState()
+        //updateSaveButtonState()
         
     }
 
@@ -52,13 +55,14 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        updateSaveButtonState()
+        //updateSaveButtonState()
         navigationItem.title = textField.text
+        //reviewTextField.text = textField.text     //Added by SW 30APR18
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the save button while editing
-        saveButton.isEnabled = false
+        saveButton.isEnabled = true
     }
     
     
@@ -101,7 +105,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
     }
     
-    // This method letss you configure a view controller before its presented
+    
+    // This method lets you configure a view controller before its presented
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
@@ -114,9 +119,10 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         let name = nameTextField.text ?? ""
         let photo = photoImageView.image
         let rating = ratingControl.rating
+        let review = reviewTextView.text ?? ""
         
         // Set the meal to be passed to MealTableViewController after the unwind segue
-        meal = Meal(name: name, photo: photo, rating: rating)
+            meal = Meal(name: name, photo: photo, rating: rating, review: review)
     }
     
     //MARK: Actions
@@ -138,12 +144,14 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
  
     //MARK: Private Methods
-    
+    /*
     private func updateSaveButtonState() {
         // Disable save button if the text field is empty
         let text = nameTextField.text ?? ""
+        let textR = reviewTextView.text ?? ""
         saveButton.isEnabled = !text.isEmpty
+        saveButton.isEnabled = !textR.isEmpty   //Added by SW 30APR18
     }
-    
+    */
 }
 

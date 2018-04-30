@@ -163,23 +163,27 @@ class MealTableViewController: UITableViewController {
     //MARK: Private Methods
     
     private func loadSampleMeals() {
-        let photo1 = UIImage(named: "wolfBread")
-        let photo2 = UIImage(named: "pigeonPie")
-        let photo3 = UIImage(named: "freyBread")
+        let photo1 = UIImage(named: "restaurant-default")
+//        let photo2 = UIImage(named: "pigeonPie")
+//        let photo3 = UIImage(named: "freyBread")
         
-        guard let wolfBread = Meal(name: "Hotpie's Direwolf Bread", photo: photo1, rating: 4) else {
-            fatalError("Unable to instantiate wolfBread")
+        guard let crispitos = Meal(name: "Crispitos", photo: photo1, rating: 0, review: "") else {
+            fatalError("Unable to instantiate Crispitos")
         }
         
-        guard let pigeonPie = Meal(name: "King Joffrey's Pigeon Pie", photo: photo2, rating: 5) else {
-            fatalError("Unable to instantiate pigeonPie")
+        guard let hamburgers = Meal(name: "Hamburgers", photo: photo1, rating: 0, review: "") else {
+            fatalError("Unable to instantiate Hamburgers")
         }
         
-        guard let freyBread = Meal(name: "Walder Frey's Bread of Peace", photo: photo3, rating: 3) else {
-            fatalError("Unable to instantiate freyBread")
+        guard let cornChowder = Meal(name: "Corn Chowder", photo: photo1, rating: 0, review: "") else {
+            fatalError("Unable to instantiate Corn Chowder")
         }
         
-        meals += [wolfBread, pigeonPie, freyBread]
+        guard let spicyChickenPatty  = Meal(name: "Spicy Chicken Patty", photo: photo1, rating: 0, review: "") else {
+            fatalError("Unable to instantiate Spicy Chicken Patty")
+        }
+        
+        meals += [crispitos, hamburgers, cornChowder, spicyChickenPatty]
     }
     
 }
