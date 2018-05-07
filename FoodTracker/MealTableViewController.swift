@@ -20,6 +20,7 @@ class MealTableViewController: UITableViewController {
         
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem?.title = "Delete"
 
         // Load the sample dataa
         loadSampleMeals()
@@ -164,10 +165,10 @@ class MealTableViewController: UITableViewController {
     
     private func loadSampleMeals() {
         let photo1 = UIImage(named: "restaurant-default")
-//        let photo2 = UIImage(named: "pigeonPie")
-//        let photo3 = UIImage(named: "freyBread")
+        let photo2 = UIImage(named: "spicyChicken")
+        let photo3 = UIImage(named: "crispitos")
         
-        guard let crispitos = Meal(name: "Crispitos", photo: photo1, rating: 0, review: "") else {
+        guard let crispitos = Meal(name: "Crispitos", photo: photo3, rating: 0, review: "") else {
             fatalError("Unable to instantiate Crispitos")
         }
         
@@ -179,7 +180,7 @@ class MealTableViewController: UITableViewController {
             fatalError("Unable to instantiate Corn Chowder")
         }
         
-        guard let spicyChickenPatty  = Meal(name: "Spicy Chicken Patty", photo: photo1, rating: 0, review: "") else {
+        guard let spicyChickenPatty  = Meal(name: "Spicy Chicken Patty", photo: photo2, rating: 0, review: "") else {
             fatalError("Unable to instantiate Spicy Chicken Patty")
         }
         

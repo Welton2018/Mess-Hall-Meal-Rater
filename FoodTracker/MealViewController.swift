@@ -24,6 +24,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
  or constructed as part of adding a new meal
  */
     var meal: Meal?
+    var placeHolderLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,15 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Handle th text field's user input through delegate callbacks.
         nameTextField.delegate = self
         reviewTextView.delegate = self as? UITextViewDelegate     //Added by SW 30APR18
+        
+        //placeHolderLabel = UILabel()
+        placeHolderLabel.text = "Enter review here..."
+        placeHolderLabel.font = UIFont.italicSystemFont(ofSize: (reviewTextView.font?.pointSize)!)
+        placeHolderLabel.sizeToFit()
+        reviewTextView.addSubview(placeHolderLabel)
+        placeHolderLabel.frame.origin = CGPoint(x: 5, y: (reviewTextView.font?.pointSize)! / 2)
+        placeHolderLabel.textColor = UIColor.lightGray
+        placeHolderLabel.isHidden = !reviewTextView.text.isEmpty
         
         // Set up view if editing the existing Meal.
         if let meal = meal {
@@ -46,7 +56,22 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
     }
 
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if placeHolderLabel.textColor == UIColor.lightGray {
+            placeHolderLabel.text = ""
+            reviewTextView.textColor = UIColor.yellow
+        }
+    }
+    
 
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
     //MARK: UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -63,6 +88,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     func textFieldDidBeginEditing(_ textField: UITextField) {
         // Disable the save button while editing
         saveButton.isEnabled = true
+        placeHolderLabel.isHidden = !reviewTextView.text.isEmpty
     }
     
     
@@ -123,6 +149,13 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // Set the meal to be passed to MealTableViewController after the unwind segue
             meal = Meal(name: name, photo: photo, rating: rating, review: review)
+    }
+    
+    
+    // Exit the keyboard while editing
+    //https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     //MARK: Actions
