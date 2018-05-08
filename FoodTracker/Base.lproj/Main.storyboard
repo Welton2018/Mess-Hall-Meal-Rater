@@ -196,7 +196,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="restaurant-default" width="800" height="800"/>
+        <image name="restaurant-default" width="400" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="CQ8-qh-pma"/>

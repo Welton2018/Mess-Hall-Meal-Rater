@@ -1,9 +1,9 @@
 //
 //  MealTableViewController.swift
-//  FoodTracker
+//  West Point Meal Rater
 //
-//  Created by Spencer Welton on 11/6/17.
-//  Copyright © 2017 PrideLand Tech. All rights reserved.
+//  Created by Spencer Welton, Ryan Wilson, and Andre Hufnagel on 14APR2018.
+//  Copyright © 2018 PrideLand Tech. All rights reserved.
 //
 
 import UIKit
@@ -21,9 +21,15 @@ class MealTableViewController: UITableViewController {
         // Use the edit button item provided by the table view controller.
         navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.leftBarButtonItem?.title = "Delete"
+        
+        // Load any saved meals or sample data if no saved meals exist
+        if let savedMeals = loadMeals() {
+            meals += savedMeals
+        } else {
+            // Load sample data
+            loadSampleMeals()
+        }
 
-        // Load the sample dataa
-        loadSampleMeals()
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,6 +84,7 @@ class MealTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             meals.remove(at: indexPath.row)
+            saveMeals()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -151,12 +158,10 @@ class MealTableViewController: UITableViewController {
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
             
+            //Save the Meals
+            saveMeals()
             
-            //Add a new meal
-            //let newIndexPath = IndexPath(row: meals.count, section: 0)
             
-            //meals.append(meal)
-            //tableView.insertRows(at: [newIndexPath], with: .automatic)
         }
     }
     
@@ -185,6 +190,25 @@ class MealTableViewController: UITableViewController {
         }
         
         meals += [crispitos, hamburgers, cornChowder, spicyChickenPatty]
+    
+    
+        
     }
+    
+    private func saveMeals() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(meals, toFile: Meal.ArchiveURL.path)
+        
+        if isSuccessfulSave {
+            os_log("meals Successfully Saved", log: OSLog.default, type: .debug)
+        } else {
+            os_log("Failed to save meals...", log: OSLog.default, type: .error)
+        }
+    }
+        
+    
+    private func loadMeals() -> [Meal]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Meal.ArchiveURL.path) as? [Meal]
+    }
+    
     
 }

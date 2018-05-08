@@ -1,9 +1,9 @@
 //
-//  FoodTrackerTests.swift
-//  FoodTrackerTests
+//  WPMRTests.swift
+//  West Point Meal Rater Test
 //
-//  Created by Spencer Welton on 10/23/17.
-//  Copyright © 2017 PrideLand Tech. All rights reserved.
+//  Created by Spencer Welton, Ryan Wilson, and Andre Hufnagel on 14APR2018.
+//  Copyright © 2018 PrideLand Tech. All rights reserved.
 //
 
 import XCTest

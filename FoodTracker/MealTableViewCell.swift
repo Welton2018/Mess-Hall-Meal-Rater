@@ -1,10 +1,9 @@
 //
 //  MealTableViewCell.swift
-//  FoodTracker
+//  West Point Meal Rater
 //
-//  Created by Spencer Welton on 11/6/17.
-//  Copyright © 2017 PrideLand Tech. All rights reserved.
-//
+//  Created by Spencer Welton, Ryan Wilson, and Andre Hufnagel on 14APR2018.
+//  Copyright © 2018 PrideLand Tech. All rights reserved.
 
 import UIKit
 

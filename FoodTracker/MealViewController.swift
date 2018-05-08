@@ -1,15 +1,15 @@
 //
 //  MealViewController.swift
-//  FoodTracker
+//  West Point Meal Rater
 //
-//  Created by Spencer Welton on 10/23/17.
-//  Copyright © 2017 PrideLand Tech. All rights reserved.
+//  Created by Spencer Welton, Ryan Wilson, and Andre Hufnagel on 14APR2018.
+//  Copyright © 2018 PrideLand Tech. All rights reserved.
 //
 
 import UIKit
 import os.log
 
-class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MealViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -31,7 +31,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         
         // Handle th text field's user input through delegate callbacks.
         nameTextField.delegate = self
-        reviewTextView.delegate = self as? UITextViewDelegate     //Added by SW 30APR18
+        reviewTextView.delegate = self      //Added by SW 30APR18
         
         //placeHolderLabel = UILabel()
         placeHolderLabel.text = "Enter review here..."
@@ -41,6 +41,10 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         placeHolderLabel.frame.origin = CGPoint(x: 5, y: (reviewTextView.font?.pointSize)! / 2)
         placeHolderLabel.textColor = UIColor.lightGray
         placeHolderLabel.isHidden = !reviewTextView.text.isEmpty
+        // Used this website to learn how to add default placement text to help
+        // instruct the user. 07MAY2018
+        //
+        
         
         // Set up view if editing the existing Meal.
         if let meal = meal {
@@ -63,7 +67,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         }
     }
     
-
+    //MARK:  UITextViewDelegate
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
@@ -154,6 +158,8 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     
     // Exit the keyboard while editing
     //https://medium.com/@KaushElsewhere/how-to-dismiss-keyboard-in-a-view-controller-of-ios-3b1bfe973ad1
+    // Used this website to figure out how to implement a UITextView and how to hide the
+    // keyboard when done with it. 07MAY2018
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -177,6 +183,7 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     }
  
     //MARK: Private Methods
+    
     /*
     private func updateSaveButtonState() {
         // Disable save button if the text field is empty
@@ -188,3 +195,12 @@ class MealViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
     */
 }
 
+
+
+// We used the "Jump Right In" app tutorial for the basis of the app we were trying
+//      to create. It gave us our basic structure as well as walked us through the
+//      the beginnigs of creating our own app. With its help we were able to take what
+//      was created and add our own spin to meet our initial project goal. The website
+//      we used was:
+//      https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/
+//      24APR2018
